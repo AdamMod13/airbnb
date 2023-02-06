@@ -1,15 +1,16 @@
 import type { NextPage } from 'next'
-import { Props } from 'next/dist/client/script'
 import Head from 'next/head'
 import React from 'react'
 import Banner from '../components/Banner'
 import Header from '../components/Header'
+import MediumCard from '../components/MediumCard'
 import SmallCard from '../components/SmallCard'
 import { ExploreData } from '../Models/ExploreData.model'
+import { LiveAnywhereData } from '../Models/LiveAnywhereData.model'
 
 interface HomeProps {
 	exploreData: ExploreData[];
-	cardsData: any;
+	cardsData: LiveAnywhereData[];
 }
 
 const Home: NextPage<HomeProps> = ({exploreData, cardsData}) => {
@@ -32,15 +33,22 @@ const Home: NextPage<HomeProps> = ({exploreData, cardsData}) => {
 								key={img}
 								img={img} 
 								distance={distance}
-								location={location} />
+								location={location} 
+							/>
 						))}
 					</div>
 				</section>
 				<section className='pt-6'>
 					<h2 className='text-4xl font-semibold py-8'>Live anywhere</h2>
-					{/* {cardsData.map((item: any) => (
-
-					))} */}
+					<div className='flex space-x-3 overflow-scroll scrollbar-hide p-3 -ml-3'>
+						{cardsData?.map(({img, title}) => (
+							<MediumCard
+								key={img}
+								img={img}
+								title={title}	
+							/>
+						))}
+					</div>
 				</section>
 			</main>
 		</div>
@@ -53,7 +61,7 @@ export async function getStaticProps() {
 			(res) => res.json()
 		)
 	
-	const cardsData = await fetch('https://links.papareact.com/zp1')
+	const cardsData: LiveAnywhereData = await fetch('https://links.papareact.com/zp1')
 		.then(
 			(res) => res.json()
 		)
