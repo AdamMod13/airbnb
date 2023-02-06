@@ -3,6 +3,7 @@ import Head from 'next/head'
 import React from 'react'
 import Banner from '../components/Banner'
 import Header from '../components/Header'
+import LargeCard from '../components/LargeCard'
 import MediumCard from '../components/MediumCard'
 import SmallCard from '../components/SmallCard'
 import { ExploreData } from '../Models/ExploreData.model'
@@ -50,6 +51,13 @@ const Home: NextPage<HomeProps> = ({exploreData, cardsData}) => {
 						))}
 					</div>
 				</section>
+
+				<LargeCard 
+					img="https://links.papareact.com/4cj"
+					title="The Greatest Outdoors"
+					description="WishLists curated by Airbnb."
+					buttonText="Get Inspired"
+				/>
 			</main>
 		</div>
 	)
