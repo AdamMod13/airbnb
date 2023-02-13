@@ -5,8 +5,9 @@ import Header from '../components/Header'
 import {format} from 'date-fns/fp'
 import { SearchResults } from '../Models/SearchResults.model'
 import InfoCard from '../components/InfoCard'
+import Map from '../components/Map'
 
-export default function search( {searchResults} ) {
+export default function search( {searchResults}: any ) {
   const router = useRouter();
   const {location, startDate, endDate, numberOfGuests} = router.query;
   
@@ -37,10 +38,18 @@ export default function search( {searchResults} ) {
                 description={description}
                 star={star}
                 price={price}
-                total={total}
+                total={total} 
+                long={undefined} 
+                lat={undefined}              
               />
             ))}
           </div>
+        </section>
+
+        <section className='min-w-[600px]'>
+          <Map 
+            searchResults={searchResults}
+          />
         </section>
       </main>
       <Footer/>
