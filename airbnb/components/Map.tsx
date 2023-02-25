@@ -1,13 +1,12 @@
-import { Key, useState } from 'react'
+import { useState } from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import "mapbox-gl/dist/mapbox-gl.css";
 import { getCenter } from 'geolib';
 import { MapPinIcon } from '@heroicons/react/24/solid';
-import { SearchResults } from '../Models/SearchResults.model';
 
 export default function Map({searchResults}: any) {
 
-  const [selectedLocation, setSelectedLocation] = useState({});
+  const [selectedLocation, setSelectedLocation] = useState<any>({});
 
   const coordinates = searchResults.map((result: {long: number, lat: number}) => ({
     longitude: result.long,

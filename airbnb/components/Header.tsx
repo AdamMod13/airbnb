@@ -7,7 +7,7 @@ import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
 import { useRouter } from 'next/router';
 
-export default function Header ( {placeholder} ) {
+export default function Header ( {placeholder}: any ) {
 	const [searchInput, setSearchInput] = useState('');
 	const [startDate, setStartDate] = useState(new Date());
 	const [endDate, setEndDate] = useState(new Date())
