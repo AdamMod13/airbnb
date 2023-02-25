@@ -65,16 +65,13 @@ const Home: NextPage<HomeProps> = ({exploreData, cardsData}) => {
 	)
 }
 
-export async function getStaticProps() {
+export async function loadPlaces() {
+
 	const exploreData: ExploreData = await fetch('https://links.papareact.com/pyp')
-		.then(
-			(res) => res.json()
-		)
-	
+		.then((res) => res.json());
+
 	const cardsData: LiveAnywhereData = await fetch('https://links.papareact.com/zp1')
-		.then(
-			(res) => res.json()
-		)
+		.then((res) => res.json());
 
 	return {
 		props: {
@@ -82,6 +79,12 @@ export async function getStaticProps() {
 			cardsData
 		},
 	};
+}
+
+export async function getStaticProps() {
+	const places = await loadPlaces();
+
+	return { props: { places } }
 }
 
 export default Home
